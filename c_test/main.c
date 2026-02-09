@@ -18,3 +18,4 @@ int main() {
     scanf("%d", &x);
     return isPalindrome(x);
 }
+
