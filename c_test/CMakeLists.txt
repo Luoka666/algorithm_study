@@ -18,7 +18,8 @@ foreach (file ${ALL_SOURCES})
     # 真正把文件加入项目
     add_executable(${exe_name} ${file}
             3_Multiple.c
-            Longestsubstring_Violence.c)
+            Longestsubstring_Violence.c
+            Find_median.c)
 
     message(STATUS "已关联项目文件: ${exe_name} (${file})")
 endforeach ()
