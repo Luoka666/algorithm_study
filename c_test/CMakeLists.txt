@@ -19,7 +19,8 @@ foreach (file ${ALL_SOURCES})
     add_executable(${exe_name} ${file}
             3_Multiple.c
             Longestsubstring_Violence.c
-            Find_median.c)
+            Find_median.c
+            Longest_palindromic_substring.c)
 
     message(STATUS "已关联项目文件: ${exe_name} (${file})")
 endforeach ()
