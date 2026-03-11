@@ -2,75 +2,56 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
+int expand_S(char* s,int l,int r) {
+
+    int len = strlen(s);
+
+    while (l >= 0 && r < len && s[l] == s[r]) {
+        l--;
+        r++;
+    }
+
+    return r - l - 1;
+
+}
+
 char* longestPalindrome(char* s) {
 
-    int l1 = 1;
-    int r1 = l1;
-    int l2 = 0;
-    int r2 = l2 + 1;
-    int len1 = 0;
-    int len2 = 0;
-    int max_len1 = 0;
-    int max_len2 = 0;
+    int max_len = 1;
+    int start = 0;
     int len = strlen(s);
-    int max = 0;
 
+    for (int i = 0;i < len;i++) {
 
-    //找奇数串
-    while (r1 <= len - 1 && s[l1] == s[r1]) {
+        int len1 = expand_S(s,i,i);
+        int len2 = expand_S(s,i,i + 1);
 
-        l1--;
-        r1++;
-        len1 = r1 - l1 + 1;
-        if (len1 == 1) {
-            continue;
-        }
-        max_len1 = MAX(len1, max_len1);
+        int now_max_len = MAX(len1, len2);
 
-    }
-
-    //找偶数串
-    while (r2 <= len - 1 && s[l2] == s[r2]) {
-
-        if (s[l2] == s[r2]) {
-
-            l1--;
-            r2++;
-            max_len2 = MAX(len2, max_len2);
-
-        }else {
-            continue;
+        if (now_max_len > max_len) {
+            start = i - (now_max_len - 1) / 2;
+            max_len = now_max_len;
         }
 
     }
-    max = MAX(max_len2,max_len1);
-    if (max == max_len1) {
-        int k = 0;
-        char *c = (char*)malloc(sizeof(char) * (r1 - l1 + 1));
-        for (l1;l1 <= r1;l1++) {
-            c[k++] = s[l1];
-        }
-        return c;
-    }else {
-        int k = 0;
-        char *c = (char*)malloc(sizeof(char) * (r1 - l1 + 1));
-        for (l2;l2 <= r1;l2++) {
-            c[k++] = s[l2];
-        }
-        return c;
 
-    }
+    char* c = (char*)malloc(sizeof(char) * (max_len + 1));
 
+    memcpy(c,s + start,max_len);
+    c[max_len] = '\0';
+
+    return c;
 
 }
 
 int main(void) {
 
-    char s[7] = "babadda";
-    longestPalindrome(s);
+    char s[] = "aacbd";
 
-
-
+    char* c = longestPalindrome(s);
+    printf("%s\n",c);
+    free(c);
 
     return 0;
+
 }
