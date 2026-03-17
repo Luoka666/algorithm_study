@@ -20,7 +20,11 @@ foreach (file ${ALL_SOURCES})
             3_Multiple.c
             Longestsubstring_Violence.c
             Find_median.c
-            Longest_palindromic_substring.c)
+            Longest_palindromic_substring.c
+            move_Zero.c
+            MAX_SUM.c
+            reverse_list.c
+    )
 
     message(STATUS "已关联项目文件: ${exe_name} (${file})")
 endforeach ()

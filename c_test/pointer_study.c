@@ -1,5 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+int plus(int x,int y) {
+    x++;
+    y++;
+    return x + y;
+}
 int main(void) {
     int a  = 10;
     int* p = &a;//定义一个指向int型数据的指针变量p,(int*)为一个单独的数据类型
@@ -16,5 +21,9 @@ int main(void) {
     printf("%p\n", c);//输出*c的地址,数组首地址
     free(c); // 释放 malloc 申请的内存，避免内存泄露报错
     c = NULL; // 好习惯：释放后置空，避免野指针
+    int x = 1;
+    int y = 2;
+    int sum = plus(x,y);
+    printf("x = %d,y = %d,sum = %d\n",x,y,sum);
     return 0;
 }
