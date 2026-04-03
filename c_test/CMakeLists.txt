@@ -24,6 +24,8 @@ foreach (file ${ALL_SOURCES})
             move_Zero.c
             MAX_SUM.c
             reverse_list.c
+            Palindrome_Linked_List.c
+            cycle_List.c
     )
 
     message(STATUS "已关联项目文件: ${exe_name} (${file})")
